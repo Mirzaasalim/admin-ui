@@ -1,39 +1,42 @@
 import "./mydatatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
+
+
+
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
-  ,
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
-  },
+  { field: "name", headerName: "Name", width: 130 },
 ];
 
 const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon"},
-  { id: 2, lastName: "Lannister", firstName: "Cersei"},
-  { id: 3, lastName: "Lannister", firstName: "Jaime"},
-  { id: 4, lastName: "Stark", firstName: "Arya" },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys"},
-  
+  { id: 1, name: "Coffee"},
+  { id: 2, name: "Non-Coffee"},
+  { id: 3, name: "Cake"},
+  { id: 4, name: "Pastry"},
+  { id: 5, name: "Cookie"},
+  { id: 6, name: "Snack"},
+  { id: 7, name: "Juice"},
+  { id: 8, name: "Smoothie"},
+  { id: 9, name: "Burger"},
+  { id: 10, name: "Pizza"},
+];
+
+const actionColumn = [
+ 
 ];
 
 const MyDatatable = () => {
   return (
     <div className="mydatatable">
-        <div className="mydatatableTitle">
-            All Data
-        </div>
+      <div className="mydatatableTitle">
+        All Data
+        
+      </div>
       <DataGrid
         rows={rows}
-        columns={columns}
+        columns={columns.concat(actionColumn)}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 5 },
